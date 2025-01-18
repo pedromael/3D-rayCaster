@@ -8,8 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define WIDTH 800
 #define HEIGHT 600
+#define PLAYER_SPEED 0.5
+
+extern double posX;
+extern double posY;
+extern double playerAngle;
 
 #endif

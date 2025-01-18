@@ -8,7 +8,7 @@ TARGET = 3d-rayCaster
 
 HEADERS =  
 
-SRCS = main.c
+SRCS = main.c src/control.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -4,6 +4,8 @@
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
 
+#include "control.h"
+
 int worldMap[MAP_WIDTH][MAP_HEIGHT] = {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -30,24 +32,31 @@ int worldMap[MAP_WIDTH][MAP_HEIGHT] = {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
+double posX, posY;  // Posição do jogador
+double dirX, dirY;  // Direção do jogador
+double playerAngle; // Ângulo do jogador
+double planeX;
+double planeY;
+
 int main(int a, char **ar){
     SDL_Init(SDL_INIT_VIDEO);
 
     SDL_Window *window = SDL_CreateWindow("3D-RayCaster", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Renderer *render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    double posX = 22, posY = 12;  // Posição inicial do jogador
-    double dirX = -1, dirY = 0;   // Direção inicial do jogador
-    double planeX = 0, planeY = 0.66; // Plano da câmera
+    posX = 22, posY = 12;  // Posição inicial do jogador
+    playerAngle = 0; // Ângulo inicial do jogador em radianos
+     // Plano da câmera
 
     int run = true;
+    
     while(run){
-        SDL_Event event;
-        while(SDL_PollEvent(&event)){
-            if(event.type == SDL_QUIT){
-                run = false;
-            }
-        }
+        dirX = cos(playerAngle);
+        dirY = sin(playerAngle);
+        planeX = -0.66 * sin(playerAngle);
+        planeY = 0.66 * cos(playerAngle);
+        
+        if(!control()) run = false;
 
         SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
         SDL_RenderClear(render);
