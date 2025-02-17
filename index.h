@@ -12,7 +12,7 @@
 
 #define WIDTH 800
 #define HEIGHT 600
-#define PLAYER_SPEED 0.5
+#define PLAYER_SPEED 0.1
 
 extern double posX;
 extern double posY;
