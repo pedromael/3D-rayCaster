@@ -11,9 +11,11 @@ bool control(){
     }       
 
     if (state[SDL_SCANCODE_UP]) {
-        posY += PLAYER_SPEED;
+        posX += cos(playerAngle) * PLAYER_SPEED;
+        posY += sin(playerAngle) * PLAYER_SPEED;
     }if (state[SDL_SCANCODE_DOWN]) {
-        posY -= PLAYER_SPEED;
+        posX -= cos(playerAngle) * PLAYER_SPEED;
+        posY -= sin(playerAngle) * PLAYER_SPEED;
     }if (state[SDL_SCANCODE_LEFT]) {
         playerAngle -= 0.1;
     }if (state[SDL_SCANCODE_RIGHT]) {
