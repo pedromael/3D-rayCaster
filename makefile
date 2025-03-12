@@ -4,7 +4,7 @@ CFLAGS = -Wall -g
 
 LIBS = `sdl2-config --cflags --libs` -lm -lSDL2_ttf -lSDL2main -lSDL2_image -lSDL2_mixer
 
-TARGET = 3d-rayCaster
+TARGET = exec
 
 HEADERS =  
 
